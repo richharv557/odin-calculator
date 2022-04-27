@@ -1,8 +1,24 @@
+* {
+    align-items: center;
+    justify-content: center;
+}
+
 .calculator {
     display: flex;
     flex-direction: column;
+    height: 500px;
+    width: 500px;
 }
 
 .row {
     display: flex;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+}
+
+#zero {
+    width: 100px;
 }
