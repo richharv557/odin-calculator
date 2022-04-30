@@ -1,5 +1,16 @@
-const digits = document.querySelector(".digit")
-const display = document.querySelector(".display")
+const digits = document.querySelectorAll(".digit");
+
+digits.forEach((digit) => {
+    digit.addEventListener('click', () => {
+        displayValue.push(digit.textContent);
+        updateDisplay();
+    })
+})
+
+const display = document.querySelector(".display");
+
+let displayValue = [];
+display.textContent = displayValue.join("");
 
 function add(a,b) {
     return a + b
@@ -31,3 +42,8 @@ function operate(operator,a,b) {
         return divide(a,b)
     }
 }
+
+function updateDisplay(){
+    display.textContent = displayValue.join("");
+}
+
