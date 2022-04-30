@@ -4,10 +4,19 @@
 }
 
 .calculator {
+    background-color: darkgray;
     display: flex;
     flex-direction: column;
-    height: 500px;
-    width: 500px;
+    height: 325px;
+    width: 225px;
+}
+
+.display {
+    display: flex;
+    justify-content: right;
+    height: 50px;
+    width: 200px;
+    background-color: lightgreen;
 }
 
 .row {

@@ -9,17 +9,31 @@ const decimal = document.querySelector(".decimal");
 let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null
+let shouldDisplayReset = false
 
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
+        if (shouldDisplayReset === true) {
+            resetScreen()
+            shouldDisplayReset = false
+        }
         appendToDisplay(digit.textContent);
     })
 })
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        assignOperator(operator.textContent);
+        assignOperation(operator.textContent);
     })
+})
+
+allClear.addEventListener('click', () => {
+    clearAll();
+})
+
+equals.addEventListener('click', () => {
+    secondOperand = display.textContent;
+    display.textContent = operate(currentOperation,firstOperand,secondOperand);
 })
 
 function appendToDisplay(number){
@@ -28,6 +42,13 @@ function appendToDisplay(number){
 
 function resetScreen(){
     display.textContent = ""
+}
+
+function clearAll(){
+    firstOperand = '';
+    secondOperand = '';
+    currentOperation = null
+    resetScreen();
 }
 
 function add(a,b) {
@@ -47,7 +68,9 @@ function divide(a,b) {
 }
 
 function assignOperation(operator) {
-    currentOperation = operator
+    firstOperand = display.textContent;
+    currentOperation = operator;
+    shouldDisplayReset = true;
 }
 
 function operate(operator,a,b) {
@@ -60,7 +83,7 @@ function operate(operator,a,b) {
     else if (operator == "-") {
         return subtract(a,b)
     }
-    else if (operator == "*") {
+    else if (operator == "x") {
         return multiply(a,b)
     }
     else if (operator == "÷") {
