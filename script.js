@@ -32,6 +32,10 @@ digits.forEach((digit) => {
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
+        if (shouldDisplayReset === true) {
+            resetScreen()
+            shouldDisplayReset = false
+        }
         assignOperation(operator.textContent);
     })
 })
@@ -46,6 +50,10 @@ allClear.addEventListener('click', () => {
 // since none are selected anymore.
 
 equals.addEventListener('click', () => {
+    if (shouldDisplayReset === true) {
+        resetScreen()
+        shouldDisplayReset = false
+    }
     if (currentOperation !== null) {
         secondOperand = display.textContent;
         display.textContent = operate(currentOperation,firstOperand,secondOperand);
