@@ -1,4 +1,3 @@
-//TO ADD: DELETE FUNCTION, some kind of convert to array, look for a . if present, add if not, convert back to string logic.
 // MAKE IT LOOK NICE, MAYBE ADD AN ANIMATION AND COOL COLOR SCHEME.
 
 const digits = document.querySelectorAll(".digit");
@@ -40,14 +39,22 @@ operators.forEach((operator) => {
     })
 })
 
-// Assigning clearAll function to button
+// Assigning clearAll and delete function to button
 
 allClear.addEventListener('click', () => {
     clearAll();
 })
 
+decimal.addEventListener('click', () => {
+    appendDecimal();
+})
+
+del.addEventListener('click', () => {
+    delLastNumber();
+})
+
 // Assigning operator function to equals. Takes content of screen, maps it to second operand, and then operates. Sets current operation to null
-// since none are selected anymore.
+// since none are selected anymore upon pressing '='.
 
 equals.addEventListener('click', () => {
     if (shouldDisplayReset === true) {
@@ -101,6 +108,13 @@ function operate(operator,a,b) {
 }
 // smaller functions to update the display or clear display/variables
 
+function appendDecimal(){
+    if (display.textContent.includes(".")) {
+        return null
+    }
+    appendToDisplay(".")
+}
+
 function appendToDisplay(number){
     display.textContent += number
 }
@@ -114,6 +128,12 @@ function clearAll(){
     secondOperand = '';
     currentOperation = null
     resetScreen();
+}
+
+function delLastNumber(){
+    let tempArray = display.textContent.split("");
+    tempArray = tempArray.slice(0,-1)
+    display.textContent = tempArray.join("")
 }
 
 // basic math functions
