@@ -1,5 +1,3 @@
-// MAKE IT LOOK NICE, MAYBE ADD AN ANIMATION AND COOL COLOR SCHEME.
-
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 const del = document.querySelector(".del");
@@ -8,12 +6,16 @@ const equals = document.querySelector(".equals");
 const display = document.querySelector(".display");
 const decimal = document.querySelector(".decimal");
 
-// Need flags to impact future behavior on button presses
+// Need these flags to impact future behavior on button presses
 
 let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
-let shouldDisplayReset = false;
+let shouldDisplayReset = true;
+
+// initialize joke
+
+display.textContent = "Moo."
 
 // assign number appending function to string, and facilitate reset behavior based on the flag above
 
@@ -46,6 +48,10 @@ allClear.addEventListener('click', () => {
 })
 
 decimal.addEventListener('click', () => {
+    if (shouldDisplayReset === true) {
+        resetScreen()
+        shouldDisplayReset = false
+    }
     appendDecimal();
 })
 
@@ -54,7 +60,7 @@ del.addEventListener('click', () => {
 })
 
 // Assigning operator function to equals. Takes content of screen, maps it to second operand, and then operates. Sets current operation to null
-// since none are selected anymore upon pressing '='.
+// since none are selected anymore.
 
 equals.addEventListener('click', () => {
     if (shouldDisplayReset === true) {
@@ -88,13 +94,13 @@ function operate(operator,a,b) {
     b = Number(b);
     
     if (operator === "+") {
-        return add(a,b)
+        return round(add(a,b))
     }
     else if (operator === "-") {
-        return subtract(a,b)
+        return round(subtract(a,b))
     }
     else if (operator === "x") {
-        return multiply(a,b)
+        return round(multiply(a,b))
     }
     else if (operator === "÷") {
         if (b === 0) {
@@ -102,7 +108,7 @@ function operate(operator,a,b) {
             return "Nice Try, Pal"
         }
         else {
-            return divide(a,b)
+            return round(divide(a,b))
         }
     } else return null
 }
@@ -153,3 +159,10 @@ function multiply(a,b) {
 function divide(a,b) {
     return a / b
 }
+
+// Want to leave it without fixed number if there is no need, round at 8 decimals 
+
+function round(number){
+    return Math.round(number * 100000000) / 100000000
+}
+
