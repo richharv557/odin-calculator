@@ -8,6 +8,20 @@
     padding: 0;
 }
 
+button {
+    height: 60px;
+    width: 60px;
+    outline: 0px;
+    border: 0px;
+    border-radius: 12px;
+    font-size: x-large;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    border: none;
+}
+
 .window {
     display: flex;
     flex-direction: column;
@@ -49,20 +63,6 @@
     justify-content: center;
     gap: 4px;
     margin: 4px;
-}
-
-button {
-    height: 60px;
-    width: 60px;
-    outline: 0px;
-    border: 0px;
-    border-radius: 12px;
-    font-size: x-large;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
-}
-
-button:active {
-    border: none;
 }
 
 .wide {
