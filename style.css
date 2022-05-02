@@ -21,13 +21,14 @@
     background-color: rgb(249, 240, 227);
     display: flex;
     flex-direction: column;
-    border: 15px solid rgb(43, 43, 43);
+    border: 12px solid rgb(43, 43, 43);
     height: 460px;
     width: 300px;
     align-items: center;
     justify-content: space-evenly;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
+    padding: 10px;
 }
 
 .display {
@@ -38,8 +39,9 @@
     width: 240px;
     background-color: rgb(166, 201, 178);
     border-radius: 12px;
-    font-size: x-large;
+    font-size: 20px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .row {
@@ -53,9 +55,16 @@
 button {
     height: 60px;
     width: 60px;
+    border: 0px;
     border-radius: 12px;
     font-size: x-large;
     font-weight: bold;
+    outline: 0px;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    border: none;
 }
 
 .wide {
@@ -66,6 +75,7 @@ button {
 
 .digit {
     background-color: rgb(255, 255, 185);
+    color: rgb(43, 43, 43);
 }
 
 .decimal {
@@ -73,9 +83,17 @@ button {
 }
 
 .operator {
-    background-color: rgb(255, 124, 146); 
+    background-color: rgb(255, 104, 129); 
+    color: rgb(249, 240, 227);
 }
 
 .equals {
-    background-color: rgb(255, 124, 146); 
+    background-color: rgb(255, 104, 129);
+    color: rgb(249, 240, 227); 
+}
+
+.footer {
+    margin: 25px;
+    text-decoration: none;
+    color: rgb(43, 43, 43);
 }

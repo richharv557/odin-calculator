@@ -1,3 +1,5 @@
+// need to add logic/flags for multiple operator presses to return a null if it's nonsensical, return a null if those conditions are true
+
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 const del = document.querySelector(".del");
@@ -12,10 +14,7 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperation = null;
 let shouldDisplayReset = true;
-
-// initialize joke
-
-display.textContent = "Moo."
+let justPressedOperator = true;
 
 // assign number appending function to string, and facilitate reset behavior based on the flag above
 
@@ -26,6 +25,7 @@ digits.forEach((digit) => {
             shouldDisplayReset = false
         }
         appendToDisplay(digit.textContent);
+        justPressedOperator = false;
     })
 })
 
@@ -33,11 +33,17 @@ digits.forEach((digit) => {
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
-        if (shouldDisplayReset === true) {
-            resetScreen()
-            shouldDisplayReset = false
+        if (justPressedOperator !== true){
+            if (shouldDisplayReset === true) {
+                resetScreen()
+                shouldDisplayReset = false
+            }
+            assignOperation(operator.textContent);
+            justPressedOperator = true;
+        } else {
+            currentOperation = operator.textContent
         }
-        assignOperation(operator.textContent);
+
     })
 })
 
@@ -45,6 +51,7 @@ operators.forEach((operator) => {
 
 allClear.addEventListener('click', () => {
     clearAll();
+    justPressedOperator = false;
 })
 
 decimal.addEventListener('click', () => {
@@ -53,10 +60,12 @@ decimal.addEventListener('click', () => {
         shouldDisplayReset = false
     }
     appendDecimal();
+    justPressedOperator = false;
 })
 
 del.addEventListener('click', () => {
     delLastNumber();
+    justPressedOperator = false;
 })
 
 // Assigning operator function to equals. Takes content of screen, maps it to second operand, and then operates. Sets current operation to null
@@ -105,7 +114,7 @@ function operate(operator,a,b) {
     else if (operator === "÷") {
         if (b === 0) {
             shouldDisplayReset = true;
-            return "Nice Try, Pal"
+            return "Nice Try"
         }
         else {
             return round(divide(a,b))
