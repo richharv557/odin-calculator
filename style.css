@@ -1,65 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 
 * {
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: bold;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Anonymous Pro', monospace;
 }
 
 .window {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
+    height: 100vh;
+    background-color: rgb(225, 227, 245);
 }
 
 .calculator {
-    background-color: rgb(249, 240, 227);
     display: flex;
     flex-direction: column;
-    border: 12px solid rgb(43, 43, 43);
-    height: 460px;
-    width: 300px;
     align-items: center;
     justify-content: space-evenly;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 12px solid rgb(43, 43, 43);
     border-radius: 12px;
     padding: 10px;
+    height: 460px;
+    width: 300px;
+    background-color: rgb(249, 240, 227);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .display {
     display: flex;
     justify-content: right;
     align-items: center;
+    border-radius: 2px;
     height: 60px;
     width: 240px;
-    background-color: rgb(166, 201, 178);
-    border-radius: 12px;
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 5px;
+    font-size: x-large;
+    background-color: rgb(166, 201, 178);
 }
 
 .row {
     display: flex;
-    gap: 4px;
-    margin: 4px;
     align-items: center;
     justify-content: center;
+    gap: 4px;
+    margin: 4px;
 }
 
 button {
     height: 60px;
     width: 60px;
+    outline: 0px;
     border: 0px;
     border-radius: 12px;
     font-size: x-large;
-    font-weight: bold;
-    outline: 0px;
     border-bottom: 4px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -73,26 +71,20 @@ button:active {
     color: rgb(249, 240, 227);
 }
 
-.digit {
+.digit,
+.decimal {
     background-color: rgb(255, 255, 185);
     color: rgb(43, 43, 43);
 }
 
-.decimal {
-    background-color: rgb(255, 255, 185); 
-}
-
-.operator {
+.operator,
+.equals {
     background-color: rgb(255, 104, 129); 
     color: rgb(249, 240, 227);
 }
 
-.equals {
-    background-color: rgb(255, 104, 129);
-    color: rgb(249, 240, 227); 
-}
-
 .footer {
+    font-weight: 500;
     margin: 25px;
     text-decoration: none;
     color: rgb(43, 43, 43);

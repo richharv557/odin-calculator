@@ -29,7 +29,8 @@ digits.forEach((digit) => {
     })
 })
 
-// similar to above, but just assigning the operation
+// similar to above, but just assigning the operation. Added a justPressedOperator flag to account for repeatedly hitting an operator button
+// without any digit input.
 
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
@@ -81,7 +82,6 @@ equals.addEventListener('click', () => {
         display.textContent = operate(currentOperation,firstOperand,secondOperand);
         currentOperation = null;
     } else null
-
 })
 
 // key functions - these handle the working of operator buttons. The first function finishes the processing of an existing operation
@@ -143,6 +143,8 @@ function clearAll(){
     secondOperand = '';
     currentOperation = null
     resetScreen();
+    display.textContent = "0"
+    shouldDisplayReset = true;
 }
 
 function delLastNumber(){
@@ -168,8 +170,6 @@ function multiply(a,b) {
 function divide(a,b) {
     return a / b
 }
-
-// Want to leave it without fixed number if there is no need, round at 8 decimals 
 
 function round(number){
     return Math.round(number * 100000000) / 100000000
